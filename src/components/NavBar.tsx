@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <div style={navBarStyle}>
       <NavLink to="/" end>
-        Home
+        Lista
       </NavLink>
       <NavLink to="/ProductAdd">Add Producto WoW</NavLink>
       <NavLink to="/page2">Page 2</NavLink>
