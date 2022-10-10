@@ -1,14 +1,12 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
 // import variables from "./App.scss";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { BrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
-import Home from "./routes/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductAdd from "./routes/ProductAdd";
 import Page2 from "./routes/Page2";
-import Lista from "./routes/Lista";
+import Lista from "./routes/List";
 
 function App() {
   /* #region STYLE */

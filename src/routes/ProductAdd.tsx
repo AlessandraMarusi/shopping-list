@@ -1,6 +1,3 @@
-import React, { Component } from "react";
-import { useState } from "react";
-
 const ProductAdd = (props: any, state: string) => {
   // const [product, setProduct] = useState({
   //   name: "",
@@ -14,7 +11,6 @@ const ProductAdd = (props: any, state: string) => {
       quantity: e.target[1].value,
     };
     products.push(newProduct);
-    console.log(newProduct);
     localStorage.setItem("products", JSON.stringify(products));
   };
 
