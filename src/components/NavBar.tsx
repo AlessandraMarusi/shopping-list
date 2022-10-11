@@ -20,7 +20,8 @@ const NavBar = () => {
         Lista
       </NavLink>
       <NavLink to="/ProductAdd">Add Producto WoW</NavLink>
-      <NavLink to="/page2">Page 2</NavLink>
+      <NavLink to="/RecipeList">Recipes List</NavLink>
+      <NavLink to="/CatFacts">Cat Facts!</NavLink>
     </div>
   );
 };

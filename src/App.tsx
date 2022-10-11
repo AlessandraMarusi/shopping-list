@@ -5,8 +5,9 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductAdd from "./routes/ProductAdd";
-import Page2 from "./routes/Page2";
-import Lista from "./routes/List";
+import RecipeList from "./routes/RecipeList";
+import Lista from "./routes/IngredientList";
+import CatFacts from "./routes/CatFacts";
 
 function App() {
   /* #region STYLE */
@@ -22,7 +23,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Lista />}></Route>
             <Route path="/ProductAdd" element={<ProductAdd />}></Route>
-            <Route path="/Page2" element={<Page2 />}></Route>
+            <Route path="/RecipeList" element={<RecipeList />}></Route>
+            <Route path="/CatFacts" element={<CatFacts />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
