@@ -1,8 +1,4 @@
 const ProductAdd = (props: any, state: string) => {
-  // const [product, setProduct] = useState({
-  //   name: "",
-  //   quantity: "",
-  // });
   const addProduct = (e: any) => {
     const products = JSON.parse(localStorage.getItem("products") || "[]");
     e.preventDefault();

@@ -16,10 +16,20 @@ const DeleteButton = (props: ListaProps) => {
     }
   };
 
+  const deleteStyle = {
+    width: "25px",
+    height: "25px",
+    border: "none",
+    backgroundColor: "#E07973",
+    cursor: "pointer",
+  };
+
   return (
-    <td>
-      <button onClick={deleteItem}>Delete</button>
-    </td>
+    <div>
+      <button style={deleteStyle} onClick={deleteItem}>
+        X
+      </button>
+    </div>
   );
 };
 export default DeleteButton;

@@ -1,7 +1,3 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import ReactDOM from "react-dom";
-import { Value } from "sass";
-
 interface IngredientListProps {
   name: string;
   checkNumber: number;
@@ -10,24 +6,32 @@ interface IngredientListProps {
 }
 
 const SwapCheck = (props: IngredientListProps) => {
-  const { name, checkNumber, checkRef } = props;
+  const { name, checkRef } = props;
 
   const handleChange = (e: any) => {
-    const { value, checked } = e.target;
+    const { value } = e.target;
     props.onCheck(value);
   };
 
+  const checkContainerStyle = {
+    width: "100px",
+  };
+  const checkStyle = {
+    cursor: "pointer",
+  };
+
   return (
-    <td>
+    <div style={checkContainerStyle}>
       <input
         type="checkbox"
         name={name}
         value={name}
         onChange={handleChange}
         ref={checkRef}
+        style={checkStyle}
       ></input>
       <label htmlFor={name}> Swap</label>
-    </td>
+    </div>
   );
 };
 
