@@ -21,14 +21,14 @@ const SwapCheck = (props: IngredientListProps) => {
   };
 
   return (
-    <div style={checkContainerStyle}>
+    <div className="ingredients_check">
       <input
+        className="ingredients_checkInput"
         type="checkbox"
         name={name}
         value={name}
         onChange={handleChange}
         ref={checkRef}
-        style={checkStyle}
       ></input>
       <label htmlFor={name}> Swap</label>
     </div>

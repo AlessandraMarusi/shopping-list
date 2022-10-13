@@ -27,11 +27,9 @@ const DeleteButton = (props: ListaProps) => {
   };
 
   return (
-    <div>
-      <button style={deleteStyle} onClick={deleteItem}>
-        X
-      </button>
-    </div>
+    <button className="ingredients_button" onClick={deleteItem}>
+      X
+    </button>
   );
 };
 export default DeleteButton;

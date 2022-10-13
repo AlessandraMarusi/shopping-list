@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.scss";
+import "./styles/App.scss";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -12,17 +12,12 @@ import RecipeDetails from "./routes/RecipeDetails";
 const ThemeContext = React.createContext("light");
 
 function App() {
-  /* #region STYLE */
-  const containerStyle = {
-    height: "80vh",
-  };
-  /* #endregion */
   return (
     <ThemeContext.Provider value="dark">
       <div className="App">
         <BrowserRouter>
           <NavBar />
-          <div style={containerStyle}>
+          <div className="app_container">
             <Routes>
               <Route path="/shopping-list" element={<IngredientList />}></Route>
               <Route path="/ProductAdd" element={<ProductAdd />}></Route>

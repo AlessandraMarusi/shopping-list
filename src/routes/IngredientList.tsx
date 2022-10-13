@@ -3,6 +3,7 @@ import DeleteButton from "../components/DeleteButton";
 import SwapCheck from "../components/SwapCheck";
 import AddProductForm from "../components/AddProductForm";
 import React from "react";
+import "../styles/ingredientListStyle.scss";
 
 const ThemeContext = React.createContext("light");
 
@@ -86,10 +87,6 @@ const IngredientList = () => {
   }, [checkedItems]);
 
   /* #region STYLE  */
-  const listContainer = {
-    width: "80%",
-    margin: "0 auto",
-  };
   const nameStyle = {
     width: "80%",
   };
@@ -103,9 +100,9 @@ const IngredientList = () => {
   /* #endregion */
   //Render the products array
   const listItems: JSX.Element[] = products.map((el: any, index: number) => (
-    <div style={row} key={el.name}>
-      <div style={nameStyle}>{el.name}</div>
-      <div style={quantityStyle}>{el.quantity}</div>
+    <div className="ingredients_row" key={el.name}>
+      <div className="ingredients_name">{el.name}</div>
+      <div className="ingredients_quantity">{el.quantity}</div>
 
       <SwapCheck
         name={el.name}
@@ -127,7 +124,7 @@ const IngredientList = () => {
   ));
 
   return (
-    <div style={listContainer}>
+    <div className="ingredients">
       {listItems}
 
       <AddProductForm products={products} onAdd={handleAdd} />

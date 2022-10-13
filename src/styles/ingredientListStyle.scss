@@ -1,0 +1,38 @@
+.ingredients {
+    width: 90%;
+    margin: 15px auto;
+    background-color: white;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
+    .ingredients_row {
+        display: flex;
+        padding: 10px;
+        .ingredients_name{
+            flex-grow: 2;
+        }
+        .ingredients_quantity{
+            min-width: 50px;
+        }
+        .ingredients_check{
+            width: 100px;
+            .ingredients_checkInput{
+                cursor: pointer;
+            }
+        }
+        .ingredients_button{
+            width: 25px;
+            height: 25px;
+            border: none;
+            background-color: #E07973;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    }
+}
+
+@media (min-width: 768px){
+    .ingredients{
+        width: 80%;
+    }
+}
