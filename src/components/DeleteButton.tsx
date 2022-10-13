@@ -1,3 +1,6 @@
+import React from "react";
+
+
 interface ListaProps {
   id: string;
   products: any;
@@ -6,6 +9,7 @@ interface ListaProps {
 //Component only modify the array, any change to localstorage happens in List
 const DeleteButton = (props: ListaProps) => {
   const { products, id } = props;
+  
 
   const deleteItem = () => {
     const index = products.findIndex((e: any) => e.name === id);
@@ -26,9 +30,14 @@ const DeleteButton = (props: ListaProps) => {
 
   return (
     <div>
-      <button style={deleteStyle} onClick={deleteItem}>
-        X
-      </button>
+      <ThemeContext.Consumer>
+        {value => (
+        <button style={deleteStyle} onClick={deleteItem}>{value}
+          </button>
+          )
+        }
+        
+      </ThemeContext.Consumer>
     </div>
   );
 };

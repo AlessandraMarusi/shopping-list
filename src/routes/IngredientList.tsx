@@ -2,6 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import DeleteButton from "../components/DeleteButton";
 import SwapCheck from "../components/SwapCheck";
 import AddProductForm from "../components/AddProductForm";
+import React from "react";
+
+
+
+const ThemeContext = React.createContext("light")
+
 
 const IngredientList = () => {
   // Set products to the current data saved in LocalLtorage
@@ -99,7 +105,6 @@ const IngredientList = () => {
     padding: "10px 0",
   };
   /* #endregion */
-
   //Render the products array
   const listItems: JSX.Element[] = products.map((el: any, index: number) => (
     <div style={row} key={el.name}>
@@ -114,8 +119,9 @@ const IngredientList = () => {
           checkRefs.current[index] = element;
         }}
       />
-
+      <ThemeContext.Provider value="dark">
       <DeleteButton id={el.name} products={products} onDelete={handleDelete} />
+      </ThemeContext.Provider>
       {/* <button onClick={checkConsole}>check</button> */}
     </div>
   ));

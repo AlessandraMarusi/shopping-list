@@ -44,7 +44,7 @@ const AddProductForm = (props: ListaProps) => {
   };
   const btnContainer = {
     width: "125px",
-    textAlign: "left",
+    // textAlign: "left",
   };
   /* #endregion */
   return (

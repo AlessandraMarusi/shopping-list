@@ -1,9 +1,8 @@
 import recipes from "../models/Recipes";
+import { Link } from "react-router-dom"
 
 const RecipeList = () => {
-  console.log(recipes);
-  const recipesNum = recipes.length;
-  console.log();
+  // const recipesNum = recipes.length;
   const recipeNameItems: JSX.Element[] = recipes.map((recipe: any) => {
     return (
       <tr style={{ width: "100%" }} key={recipe.name}>
@@ -15,19 +14,11 @@ const RecipeList = () => {
             </td>
           );
         })}
-        {/* <td>{el.quantity}</td> */}
+        <td><Link to={`/RecipeList/${recipe.name}`}>About</Link></td>
       </tr>
     );
   });
 
-  /* const recipeNameItems: JSX.Element[] = recipes.map((el: any) => (
-    <tr style={{ width: "100%" }} key={el.name}>
-      <td>{el.name}</td>
-      <td>{el.quantity}</td>
-    </tr>
-  )); */
-
-  // const importedRecipes = JSON.parse(exportRecipes);
   return (
     <div>
       Recipes
