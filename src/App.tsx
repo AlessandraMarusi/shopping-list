@@ -9,8 +9,7 @@ import CatFacts from "./routes/CatFacts";
 import IngredientList from "./routes/IngredientList";
 import RecipeDetails from "./routes/RecipeDetails";
 
-
-const ThemeContext = React.createContext('light');
+const ThemeContext = React.createContext("light");
 
 function App() {
   /* #region STYLE */
@@ -25,12 +24,11 @@ function App() {
           <NavBar />
           <div style={containerStyle}>
             <Routes>
-              <Route path="/" element={<IngredientList />}></Route>
+              <Route path="/shopping-list" element={<IngredientList />}></Route>
               <Route path="/ProductAdd" element={<ProductAdd />}></Route>
               <Route path="/RecipeList" element={<RecipeList />}></Route>
               <Route path="/CatFacts" element={<CatFacts />}></Route>
               <Route path="/RecipeList/:id" element={<RecipeDetails />}></Route>
-
             </Routes>
           </div>
         </BrowserRouter>
