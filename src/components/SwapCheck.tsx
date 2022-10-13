@@ -1,6 +1,6 @@
 interface IngredientListProps {
   name: string;
-  checkNumber: number;
+  // checkNumber: number;
   checkRef: any;
   onCheck: (value: string) => void;
 }

@@ -4,10 +4,7 @@ import SwapCheck from "../components/SwapCheck";
 import AddProductForm from "../components/AddProductForm";
 import React from "react";
 
-
-
-const ThemeContext = React.createContext("light")
-
+const ThemeContext = React.createContext("light");
 
 const IngredientList = () => {
   // Set products to the current data saved in LocalLtorage
@@ -40,12 +37,11 @@ const IngredientList = () => {
       });
       return;
     }
-    /* IF already in the array */
+    /* IF already in the array, empty the array*/
     if (checkedItems.some((el) => el === value)) {
       setCheckedItem([]);
-      console.log("AHAH GIà PRESENTE BISH");
       return;
-      /* IF not */
+      /* IF not  push in the array*/
     } else {
       setCheckedItem((prevcheckedItems) => {
         const nextcheckedItems = [...prevcheckedItems, value];
@@ -57,8 +53,8 @@ const IngredientList = () => {
         return nextcheckedItems;
       });
 
-      console.log(checkedItems[0]);
-      console.log(checkedItems[1]);
+      // console.log(checkedItems[0]);
+      // console.log(checkedItems[1]);
     }
   };
 
@@ -113,14 +109,18 @@ const IngredientList = () => {
 
       <SwapCheck
         name={el.name}
-        checkNumber={checkedItems.length}
+        /* checkNumber={checkedItems.length} */
         onCheck={handleCheck}
         checkRef={(element: any) => {
           checkRefs.current[index] = element;
         }}
       />
       <ThemeContext.Provider value="dark">
-      <DeleteButton id={el.name} products={products} onDelete={handleDelete} />
+        <DeleteButton
+          id={el.name}
+          products={products}
+          onDelete={handleDelete}
+        />
       </ThemeContext.Provider>
       {/* <button onClick={checkConsole}>check</button> */}
     </div>
