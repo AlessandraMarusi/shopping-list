@@ -62,12 +62,12 @@ const IngredientList = () => {
     localStorage.setItem("products", JSON.stringify(products));
   };
 
-  //Toggle the class crossItem to crossed items on click
   const crossItem = (event: React.MouseEvent) => {
     var classes = event.currentTarget.className;
-    if (classes == "ingredients_row")
+    if (classes == "ingredients_info")
       event.currentTarget.classList.add("crossedItem");
     else event.currentTarget.classList.remove("crossedItem");
+    console.log(event.currentTarget);
   };
 
   /* do the swap after the state gets updated */
@@ -90,10 +90,11 @@ const IngredientList = () => {
   }, [checkedItems]);
   //Render the products array
   const listItems: JSX.Element[] = products.map((el: any, index: number) => (
-    <div className="ingredients_row" key={el.name} onClick={crossItem}>
-      <div className="ingredients_name">{el.name}</div>
-      <div className="ingredients_quantity">{el.quantity}</div>
-
+    <div className="ingredients_row" key={el.name}>
+      <div className="ingredients_info" onClick={crossItem}>
+        <div className="ingredients_name">{el.name}</div>
+        <div className="ingredients_quantity">{el.quantity}</div>
+      </div>
       <SwapCheck
         name={el.name}
         /* checkNumber={checkedItems.length} */

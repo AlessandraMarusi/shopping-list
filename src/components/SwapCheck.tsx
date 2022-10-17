@@ -13,13 +13,6 @@ const SwapCheck = (props: IngredientListProps) => {
     props.onCheck(value);
   };
 
-  const checkContainerStyle = {
-    width: "100px",
-  };
-  const checkStyle = {
-    cursor: "pointer",
-  };
-
   return (
     <div className="ingredients_check">
       <input

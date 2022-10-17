@@ -9,19 +9,31 @@
     padding: 15px;
     border-radius: 25px;
     box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
+    
     .crossedItem {
         text-decoration: line-through;
         filter: opacity(30%);
-        color: v.$text-test;
+        // color: v.$text-test;
     }
     .ingredients_row {
         display: flex;
         padding: 10px;
-        .ingredients_name{
+        width: 100%;
+        justify-content: space-between;
+        
+        .ingredients_info{
+            display: flex;
             flex-grow: 2;
-        }
-        .ingredients_quantity{
-            min-width: 50px;
+            justify-content: space-between;
+            padding-right: 15px;
+            margin-right: 15px;
+            border-right: 1px solid gray;
+            // .ingredients_name{
+            //     flex-grow: 2;
+            // }
+            // .ingredients_quantity{
+            //     min-width: 50px;
+            // }
         }
         .ingredients_check{
             width: 100px;
