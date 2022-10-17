@@ -1,3 +1,7 @@
+@use 'variables' as v;
+@use 'generals';
+
+
 .ingredients {
     width: 90%;
     margin: 15px auto;
@@ -5,6 +9,11 @@
     padding: 15px;
     border-radius: 25px;
     box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
+    .crossedItem {
+        text-decoration: line-through;
+        filter: opacity(30%);
+        color: v.$text-test;
+    }
     .ingredients_row {
         display: flex;
         padding: 10px;
@@ -16,8 +25,11 @@
         }
         .ingredients_check{
             width: 100px;
-            .ingredients_checkInput{
+            input{
                 cursor: pointer;
+            }
+            label{
+                display: none;
             }
         }
         .ingredients_button{
@@ -34,5 +46,12 @@
 @media (min-width: 768px){
     .ingredients{
         width: 80%;
+        .ingredients_row {
+            .ingredients_check{
+                label{
+                    display: inline;
+                }
+            }
+        }
     }
 }

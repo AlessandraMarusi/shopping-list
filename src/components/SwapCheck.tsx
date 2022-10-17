@@ -23,7 +23,6 @@ const SwapCheck = (props: IngredientListProps) => {
   return (
     <div className="ingredients_check">
       <input
-        className="ingredients_checkInput"
         type="checkbox"
         name={name}
         value={name}

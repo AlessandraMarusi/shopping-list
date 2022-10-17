@@ -49,13 +49,8 @@ const IngredientList = () => {
         products.forEach((element: any, index: number) => {
           checkRefs.current[index].checked = false;
         });
-
-        // checkRef.current.checked = false;
         return nextcheckedItems;
       });
-
-      // console.log(checkedItems[0]);
-      // console.log(checkedItems[1]);
     }
   };
 
@@ -65,6 +60,14 @@ const IngredientList = () => {
       products.length
     ); /* Creato unicamente per l'update del render senza dover duplicare l'array */
     localStorage.setItem("products", JSON.stringify(products));
+  };
+
+  //Toggle the class crossItem to crossed items on click
+  const crossItem = (event: React.MouseEvent) => {
+    var classes = event.currentTarget.className;
+    if (classes == "ingredients_row")
+      event.currentTarget.classList.add("crossedItem");
+    else event.currentTarget.classList.remove("crossedItem");
   };
 
   /* do the swap after the state gets updated */
@@ -85,22 +88,9 @@ const IngredientList = () => {
     }
     //
   }, [checkedItems]);
-
-  /* #region STYLE  */
-  const nameStyle = {
-    width: "80%",
-  };
-  const quantityStyle = {
-    width: "20%",
-  };
-  const row = {
-    display: "flex",
-    padding: "10px 0",
-  };
-  /* #endregion */
   //Render the products array
   const listItems: JSX.Element[] = products.map((el: any, index: number) => (
-    <div className="ingredients_row" key={el.name}>
+    <div className="ingredients_row" key={el.name} onClick={crossItem}>
       <div className="ingredients_name">{el.name}</div>
       <div className="ingredients_quantity">{el.quantity}</div>
 
@@ -112,13 +102,7 @@ const IngredientList = () => {
           checkRefs.current[index] = element;
         }}
       />
-      <ThemeContext.Provider value="dark">
-        <DeleteButton
-          id={el.name}
-          products={products}
-          onDelete={handleDelete}
-        />
-      </ThemeContext.Provider>
+      <DeleteButton id={el.name} products={products} onDelete={handleDelete} />
       {/* <button onClick={checkConsole}>check</button> */}
     </div>
   ));

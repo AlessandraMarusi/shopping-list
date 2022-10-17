@@ -1,21 +1,9 @@
 import { NavLink } from "react-router-dom";
+import "../styles/navbarStyle.scss";
 
 const NavBar = () => {
-  /* #region STYLE */
-  const navBarStyle = {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    color: "--myWhite",
-    backgroundColor: "--myBlack",
-    width: "50%",
-    margin: "0 auto",
-    height: "10vh",
-  };
-  /* #endregion */
-
   return (
-    <div style={navBarStyle}>
+    <div className="navbar">
       <NavLink to="/" end>
         Lista
       </NavLink>
