@@ -10,9 +10,9 @@ const ThemeContext = React.createContext("light");
 
 const IngredientList = () => {
   // Set products to the current data saved in LocalLtorage
-  const [products, setProducts] = useState(
-    JSON.parse(localStorage.getItem("products") || "[]")
-  );
+  const [products, setProducts] = useState<
+    { name: string; quantity: string; marked: boolean }[]
+  >(JSON.parse(localStorage.getItem("products") || "[]"));
   //Used for re-rendering page on products change
   const [length, setLength] = useState(products.length);
 
@@ -21,15 +21,15 @@ const IngredientList = () => {
   const checkRefs: any = useRef([]);
 
   const [markedProducts, setMarkedProducts] = useState(0);
-  const [toBuyProducts, setToBuyProducts] = useState<number>(products.length);
 
   // Get newProducts from DeleteButton(products array without the deleted element) and update LocalStorage
-  const handleDelete = (newProducts: { name: string; quantity: string }[]) => {
+  const handleDelete = (
+    newProducts: { name: string; quantity: string; marked: boolean }[]
+  ) => {
     setProducts(newProducts);
     setLength(
       products.length
     ); /* Creato unicamente per l'update del render senza dover duplicare l'array */
-    setToBuyProducts((oldToBuyProducts) => oldToBuyProducts - 1);
     localStorage.setItem("products", JSON.stringify(products));
   };
 
@@ -59,28 +59,21 @@ const IngredientList = () => {
     }
   };
 
-  const handleAdd = (newProducts: { name: string; quantity: string }[]) => {
+  const handleAdd = (
+    newProducts: { name: string; quantity: string; marked: boolean }[]
+  ) => {
     setProducts(newProducts);
-    setLength(
-      products.length
-    ); /* Creato unicamente per l'update del render senza dover duplicare l'array */
-    setToBuyProducts((oldToBuyProducts) => oldToBuyProducts + 1);
+    setLength(products.length);
     localStorage.setItem("products", JSON.stringify(products));
   };
 
   //To cross items out of the list
-  const crossItem = (event: React.MouseEvent) => {
-    var classes = event.currentTarget.className;
-    if (classes == "ingredients_info") {
-      event.currentTarget.classList.add("crossedItem");
-      setMarkedProducts((oldMarkedProducts) => oldMarkedProducts + 1);
-      setToBuyProducts((oldToBuyProducts) => oldToBuyProducts - 1);
-    } else {
-      event.currentTarget.classList.remove("crossedItem");
-      setMarkedProducts((oldMarkedProducts) => oldMarkedProducts - 1);
-      setToBuyProducts((oldToBuyProducts) => oldToBuyProducts + 1);
-    }
-    console.log(event.currentTarget);
+  const crossItem = (el: any) => {
+    const index = products.findIndex((product) => product.name === el.name);
+    const tempArray = [...products];
+    tempArray[index].marked = !tempArray[index].marked;
+    setProducts(tempArray);
+    localStorage.setItem("products", JSON.stringify(products));
   };
 
   /* do the swap after the state gets updated */
@@ -101,10 +94,32 @@ const IngredientList = () => {
     }
     //
   }, [checkedItems]);
+
+  /* UPDATE COUNTERS */
+  useEffect(() => {
+    const counter = products.filter((product) => product.marked).length;
+    setMarkedProducts(counter);
+  }, [products, length]);
+
+  /* Function for backgroundcolor styiling */
+  const bgColor = (index: number) => {
+    if (index % 2 === 0) return "rgba(255, 228, 196, 0.274)";
+    else return "white";
+  };
+
   //Render the products array
   const listItems: JSX.Element[] = products.map((el: any, index: number) => (
-    <div className="ingredients_row" key={el.name}>
-      <div className="ingredients_info" onClick={crossItem}>
+    <div
+      className="ingredients_row"
+      key={index}
+      style={{ backgroundColor: bgColor(index) }}
+    >
+      <div
+        className={
+          el.marked ? "ingredients_info crossedItem" : "ingredients_info"
+        }
+        onClick={() => crossItem(el)}
+      >
         <div className="ingredients_name">{el.name}</div>
         <div className="ingredients_quantity">{el.quantity}</div>
       </div>
@@ -122,11 +137,23 @@ const IngredientList = () => {
   return (
     <div className="wrapper">
       <div className="ingredients">
-        {listItems}
+        <div className="ingredients_title">
+          <h2>La tua Lista della Spesa</h2>
+        </div>
+        <div className="ingredients_list">
+          <div className="ingredients_row">
+            <div className="ingredients_info">
+              <div className="ingredients_name bolder">Nome</div>
+              <div className="ingredients_quantity bolder">Quantità</div>
+            </div>
+            <div className="filler"></div>
+          </div>
+          {listItems}
+        </div>
 
         <AddProductForm products={products} onAdd={handleAdd} />
       </div>
-      <ProductInfo marked={markedProducts} toBuy={toBuyProducts} />
+      <ProductInfo marked={markedProducts} products={products} />
     </div>
   );
 };

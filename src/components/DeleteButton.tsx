@@ -3,7 +3,9 @@ import React from "react";
 interface ListaProps {
   id: string;
   products: any;
-  onDelete: (newProducts: { name: string; quantity: string }[]) => void;
+  onDelete: (
+    newProducts: { name: string; quantity: string; marked: boolean }[]
+  ) => void;
 }
 //Component only modify the array, any change to localstorage happens in List
 const DeleteButton = (props: ListaProps) => {

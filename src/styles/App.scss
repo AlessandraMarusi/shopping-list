@@ -4,12 +4,33 @@ $myWhite: white;
 .App {
     background-color: #F9F9F9;
     .app_wrapper{
-        height: 80vh;
+        height: 85vh;
         display: flex;
         justify-content: center;
         align-items: center;
         .app_container{
             width: 100%;
+        }
+    }
+    footer {
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        
+            .crossed {
+                text-decoration: line-through;
+            }
+        
+        .secret {
+            color: #F9F9F9;
+        }
+        .snowman {
+            font-size: 2rem;
+            font-weight: bolder;
+            color: #F9F9F9;
+
         }
     }
 }

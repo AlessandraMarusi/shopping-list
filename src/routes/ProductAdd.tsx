@@ -5,6 +5,7 @@ const ProductAdd = (props: any, state: string) => {
     const newProduct = {
       name: e.target[0].value,
       quantity: e.target[1].value,
+      marked: false,
     };
     products.push(newProduct);
     localStorage.setItem("products", JSON.stringify(products));

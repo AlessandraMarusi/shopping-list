@@ -4,72 +4,119 @@
 
 .ingredients {
     width: 90%;
+    min-height: 60vh;
     margin: 15px auto;
     background-color: white;
-    padding: 15px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
     
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
+    .ingredients_title {
+        padding: 8px;
+        background-color: rgb(237, 81, 81);
+        color: white;
+    }
     .crossedItem {
         text-decoration: line-through;
         filter: opacity(30%);
         // color: v.$text-test;
     }
-    .ingredients_row {
-        display: flex;
-        padding: 10px;
-        width: 100%;
-        justify-content: space-between;
-        
-        .ingredients_info{
+    .ingredients_list {
+        padding: 15px 15px -1px 15px;
+        .ingredients_row {
             display: flex;
-            flex-grow: 2;
+            padding: 10px;
+            width: 100%;
             justify-content: space-between;
-            padding-right: 15px;
-            margin-right: 15px;
-            border-right: 1px solid gray;
-            // .ingredients_name{
-            //     flex-grow: 2;
-            // }
-            // .ingredients_quantity{
-            //     min-width: 50px;
-            // }
-        }
-        .ingredients_check{
-            width: 100px;
-            input{
+            border-bottom: 1px solid gray;
+            /* Background color is in IngredientList.tsx, inline style */
+            
+            .ingredients_info{
+                display: flex;
+                flex-grow: 2;
+                justify-content: space-between;
+                padding-right: 15px;
+                margin-right: 15px;
+                border-right: 1px solid gray;
                 cursor: pointer;
             }
-            label{
-                display: none;
+            .ingredients_check{
+                width: 100px;
+                border-radius: 50%;
+                input{
+                    cursor: pointer;
+                }
+                label{
+                    display: none;
+                }
+            }
+            .ingredients_button{
+                width: 25px;
+                height: 25px;
+                border: none;
+                background-color: #E07973;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            .filler {
+                width: 125px;
             }
         }
-        .ingredients_button{
-            width: 25px;
-            height: 25px;
-            border: none;
-            background-color: #E07973;
-            cursor: pointer;
-            border-radius: 5px;
+        
+    }
+    form {
+        .form_row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+            padding: 5px 0;
+            .form_name {
+                width: 80%;
+                border: none;
+                font-size: 1.2rem;
+            }
+            .form_quantity{
+                width: 20%;
+                border: none;
+                font-size: 1.2rem;
+            }
+            .form_btnContainer{
+                width: 125px;
+                .form_button {
+                    border: none;
+                    background-color: #A2FAA7;
+                    font-size: 1.2rem;
+                    border-radius: 10px;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
+            }
         }
     }
+    
 }
 .productsInfo {
     width: 90%;
     margin: 15px auto;
     background-color: white;
     padding: 15px;
-    border-radius: 25px;
+    border-radius: 0 0 25px 25px;
     box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-size: 1.5rem;
-    span {
+    .infoExtra {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
         button {
             padding: 5px 15px;
         }
     }
+
 }
 
 @media (min-width: 768px){

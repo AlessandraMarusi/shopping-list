@@ -1,6 +1,8 @@
 interface ListaProps {
-  products: any;
-  onAdd: (newProducts: { name: string; quantity: string }[]) => void;
+  products: { name: string; quantity: string; marked: boolean }[];
+  onAdd: (
+    newProducts: { name: string; quantity: string; marked: boolean }[]
+  ) => void;
 }
 
 const AddProductForm = (props: ListaProps) => {
@@ -9,63 +11,33 @@ const AddProductForm = (props: ListaProps) => {
     const newProduct = {
       name: e.target[0].value,
       quantity: e.target[1].value,
+      marked: false,
     };
     props.products.push(newProduct);
     props.onAdd(props.products);
     e.target[0].value = "";
     e.target[1].value = "";
   };
-  /* #region STYLE  */
-  const nameStyle = {
-    width: "80%",
-    border: "none",
-    fontSize: "1.2rem",
-  };
-  const quantityStyle = {
-    width: "20%",
-    border: "none",
-    fontSize: "1.2rem",
-  };
-  const row = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottom: "1px solid black",
-    borderTop: "1px solid black",
-    padding: "5px 0",
-  };
-  const addButtonStyle = {
-    border: "none",
-    backgroundColor: "#A2FAA7",
-    fontSize: "1.2rem",
-    borderRadius: "10px",
-    padding: "5px 10px",
-    cursor: "pointer",
-  };
-  const btnContainer = {
-    width: "125px",
-    // textAlign: "left",
-  };
-  /* #endregion */
+
   return (
     <form onSubmit={addProduct} autoComplete="off">
-      <div style={row} className="formContainer">
+      <div className="form_row">
         <input
-          style={nameStyle}
+          className="form_name"
           type="text"
           aria-describedby="productName"
           name="productName"
           placeholder="New Product"
         />
         <input
-          style={quantityStyle}
+          className="form_quantity"
           type="text"
           aria-describedby="productQnt"
           name="productQnt"
           placeholder="Quantity"
         />
-        <div style={btnContainer}>
-          <button style={addButtonStyle} type="submit">
+        <div className="form_btnContainer">
+          <button className="form_button" type="submit">
             Add
           </button>
         </div>
