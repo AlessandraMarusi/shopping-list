@@ -69,10 +69,21 @@ const IngredientList = () => {
 
   //To cross items out of the list
   const crossItem = (el: any) => {
-    const index = products.findIndex((product) => product.name === el.name);
+    // PRIMO TENTATIVO
+    /* const index = products.findIndex((product) => product.name === el.name);
     const tempArray = [...products];
     tempArray[index].marked = !tempArray[index].marked;
-    setProducts(tempArray);
+    setProducts(tempArray); */
+
+    //VERSIONE PIù FIGA
+    setProducts((prevProducts) => {
+      return prevProducts.map((product) => {
+        return product.name === el.name
+          ? { ...product, marked: !product.marked }
+          : product;
+      });
+    });
+    /* Non capisco perché dovrei farlo così ma va bene non si aggiorna nemmeno sto maledetto*/
     localStorage.setItem("products", JSON.stringify(products));
   };
 
@@ -144,7 +155,7 @@ const IngredientList = () => {
           <div className="ingredients_row">
             <div className="ingredients_info">
               <div className="ingredients_name bolder">Nome</div>
-              <div className="ingredients_quantity bolder">Quantità</div>
+              <div className="ingredients_quantity">Quantità</div>
             </div>
             <div className="filler"></div>
           </div>
