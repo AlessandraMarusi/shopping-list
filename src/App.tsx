@@ -17,14 +17,23 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <NavBar />
-          <div className="app_container">
-            <Routes>
-              <Route path="/shopping-list" element={<IngredientList />}></Route>
-              <Route path="/ProductAdd" element={<ProductAdd />}></Route>
-              <Route path="/RecipeList" element={<RecipeList />}></Route>
-              <Route path="/CatFacts" element={<CatFacts />}></Route>
-              <Route path="/RecipeList/:id" element={<RecipeDetails />}></Route>
-            </Routes>
+          <div className="app_wrapper">
+            <div className="app_container">
+              <Routes>
+                <Route
+                  path="/shopping-list"
+                  element={<IngredientList />}
+                ></Route>
+                <Route path="/ProductAdd" element={<ProductAdd />}></Route>
+                <Route path="/recipe-list" element={<RecipeList />}></Route>
+                <Route path="/cat-facts" element={<CatFacts />}></Route>
+                <Route
+                  path="/recipe-list/:id"
+                  element={<RecipeDetails />}
+                ></Route>
+                <Route path="*">Oh no</Route>
+              </Routes>
+            </div>
           </div>
         </BrowserRouter>
         <Footer />

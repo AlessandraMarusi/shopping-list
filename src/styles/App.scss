@@ -3,7 +3,24 @@ $myWhite: white;
 
 .App {
     background-color: #F9F9F9;
-    .app_container{
+    .app_wrapper{
         height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .app_container{
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 768px){
+    .App {
+        .app_wrapper{
+            // width: 100%;
+            .app_container{
+                width: 90%;
+            }
+        }
     }
 }

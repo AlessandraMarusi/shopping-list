@@ -1,5 +1,5 @@
 import recipes from "../models/Recipes";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const RecipeList = () => {
   // const recipesNum = recipes.length;
@@ -14,7 +14,9 @@ const RecipeList = () => {
             </td>
           );
         })}
-        <td><Link to={`/RecipeList/${recipe.name}`}>About</Link></td>
+        <td>
+          <Link to={`/recipe-list/${recipe.name}`}>About</Link>
+        </td>
       </tr>
     );
   });

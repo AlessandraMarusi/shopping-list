@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { useSearchParams } from "react-router-dom";
 import recipes from "../models/Recipes";
 
 const RecipeDetails = () => {

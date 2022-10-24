@@ -4,6 +4,7 @@ import SwapCheck from "../components/SwapCheck";
 import AddProductForm from "../components/AddProductForm";
 import React from "react";
 import "../styles/ingredientListStyle.scss";
+import ProductInfo from "../components/ProductInfo";
 
 const ThemeContext = React.createContext("light");
 
@@ -19,12 +20,16 @@ const IngredientList = () => {
 
   const checkRefs: any = useRef([]);
 
+  const [markedProducts, setMarkedProducts] = useState(0);
+  const [toBuyProducts, setToBuyProducts] = useState<number>(products.length);
+
   // Get newProducts from DeleteButton(products array without the deleted element) and update LocalStorage
   const handleDelete = (newProducts: { name: string; quantity: string }[]) => {
     setProducts(newProducts);
     setLength(
       products.length
     ); /* Creato unicamente per l'update del render senza dover duplicare l'array */
+    setToBuyProducts((oldToBuyProducts) => oldToBuyProducts - 1);
     localStorage.setItem("products", JSON.stringify(products));
   };
 
@@ -59,14 +64,22 @@ const IngredientList = () => {
     setLength(
       products.length
     ); /* Creato unicamente per l'update del render senza dover duplicare l'array */
+    setToBuyProducts((oldToBuyProducts) => oldToBuyProducts + 1);
     localStorage.setItem("products", JSON.stringify(products));
   };
 
+  //To cross items out of the list
   const crossItem = (event: React.MouseEvent) => {
     var classes = event.currentTarget.className;
-    if (classes == "ingredients_info")
+    if (classes == "ingredients_info") {
       event.currentTarget.classList.add("crossedItem");
-    else event.currentTarget.classList.remove("crossedItem");
+      setMarkedProducts((oldMarkedProducts) => oldMarkedProducts + 1);
+      setToBuyProducts((oldToBuyProducts) => oldToBuyProducts - 1);
+    } else {
+      event.currentTarget.classList.remove("crossedItem");
+      setMarkedProducts((oldMarkedProducts) => oldMarkedProducts - 1);
+      setToBuyProducts((oldToBuyProducts) => oldToBuyProducts + 1);
+    }
     console.log(event.currentTarget);
   };
 
@@ -97,22 +110,23 @@ const IngredientList = () => {
       </div>
       <SwapCheck
         name={el.name}
-        /* checkNumber={checkedItems.length} */
         onCheck={handleCheck}
         checkRef={(element: any) => {
           checkRefs.current[index] = element;
         }}
       />
       <DeleteButton id={el.name} products={products} onDelete={handleDelete} />
-      {/* <button onClick={checkConsole}>check</button> */}
     </div>
   ));
 
   return (
-    <div className="ingredients">
-      {listItems}
+    <div className="wrapper">
+      <div className="ingredients">
+        {listItems}
 
-      <AddProductForm products={products} onAdd={handleAdd} />
+        <AddProductForm products={products} onAdd={handleAdd} />
+      </div>
+      <ProductInfo marked={markedProducts} toBuy={toBuyProducts} />
     </div>
   );
 };

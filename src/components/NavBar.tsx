@@ -4,12 +4,12 @@ import "../styles/navbarStyle.scss";
 const NavBar = () => {
   return (
     <div className="navbar">
-      <NavLink to="/" end>
+      <NavLink to="/shopping-list" end>
         Lista
       </NavLink>
       {/* <NavLink to="/ProductAdd">Add Producto WoW</NavLink> */}
-      <NavLink to="/RecipeList">Recipes List</NavLink>
-      <NavLink to="/CatFacts">Cat Facts!</NavLink>
+      <NavLink to="/recipe-list">Recipes List</NavLink>
+      <NavLink to="/cat-facts">Cat Facts!</NavLink>
     </div>
   );
 };

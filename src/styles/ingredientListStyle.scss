@@ -54,6 +54,23 @@
         }
     }
 }
+.productsInfo {
+    width: 90%;
+    margin: 15px auto;
+    background-color: white;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 19px 5px rgba(226, 226, 226, 0.57);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+    span {
+        button {
+            padding: 5px 15px;
+        }
+    }
+}
 
 @media (min-width: 768px){
     .ingredients{
@@ -65,5 +82,8 @@
                 }
             }
         }
+    }
+    .productsInfo {
+        width: 80%;
     }
 }
