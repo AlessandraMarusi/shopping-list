@@ -4,12 +4,17 @@ $myWhite: white;
 .App {
     background-color: #F9F9F9;
     .app_wrapper{
-        height: 85vh;
+        height: 84vh;
+        max-height: 84vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 10vh;
+        padding-top: 15px;
+        overflow-y: scroll;
         .app_container{
             width: 100%;
+            height: 100%;
         }
     }
     footer {
@@ -18,6 +23,13 @@ $myWhite: white;
         justify-content: center;
         align-items: center;
         gap: 5px;
+        z-index: 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top: 1px solid black;
+
         
             .crossed {
                 text-decoration: line-through;
